@@ -34,19 +34,19 @@ describe('Note', function(){
     });
   });
 
-  describe('.uploadmobile', function(){
-    it('should upload a b64 encoded image', function(done){
-      Note.uploadmobile({token: 'tok'}, 'b64image', noteId, function(err, results){
+  describe('.upload', function(){
+    it('should upload an image', function(done){
+      var file = fs.createReadStream(__dirname + '/../fixtures/flag.png');
+      Note.upload({token:'tok'}, file, 'flag.png', noteId, function(err, results){
         expect(err).to.be.null;
         done();
       });
     });
   });
 
-  describe('.upload', function(){
-    it('should upload an image', function(done){
-      var file = fs.createReadStream(__dirname + '/../fixtures/flag.png');
-      Note.upload({token: 'tok'}, file, 'flag.png', noteId, function(err, results){
+  describe('.uploadmobile', function(){
+    it('should upload a b64 encoded image', function(done){
+      Note.uploadmobile({token:'tok'}, 'b64image', noteId, function(err, results){
         expect(err).to.be.null;
         done();
       });
